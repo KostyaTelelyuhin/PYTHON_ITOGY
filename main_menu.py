@@ -40,6 +40,7 @@ GREY = 0x7D7D7D
 
 
 pygame.init()
+pygame.mixer.init()
 clock = pygame.time.Clock()
 
 WIDTH = 800
@@ -289,10 +290,20 @@ def open_window_creative():
         pygame.display.update()
 
 def fun1():
+    pygame.mixer.music.stop()
+    pygame.mixer.music.load('/Users/forcs2/Desktop/Geometry_dash/Song_of_beer.mp3')
+    pygame.mixer.music.play(loops = -1, start = 7)
     level(LEVEL1)
 def fun2():
+    pygame.mixer.music.stop()
+    pygame.mixer.music.load('/Users/forcs2/Desktop/Geometry_dash/Sonic_Blaster.ogg')
+    pygame.mixer.music.play(loops = -1, start = 30)
     level(LEVEL2)
 def fun3():
+    pygame.mixer.music.stop()
+    pygame.mixer.music.load('/Users/forcs2/Desktop/Geometry_dash/At_the_Speed_of_Light.ogg')
+    pygame.mixer.music.play(loops = -1)
+
     level(LEVEL3)
 
 
@@ -300,7 +311,8 @@ def open_window_level():
     # Создание нового окна
     new_window = pygame.display.set_mode((WIDTH, HEIGHT))
     pygame.display.set_caption("Уровни")
-
+    pygame.mixer.music.load('/Users/forcs2/Desktop/Geometry_dash/Main_menu_music.mp3')
+    pygame.mixer.music.play(loops = -1)
     # Кнопки в новом окне
     button1_lv = Button(250, 100, 350, 50, white, "Просто песенка про пиво", fun1)
     button2_lv = Button(WIDTH // 2 - 100, HEIGHT // 2, 270, 50, white, "Физтех", fun2)
@@ -338,7 +350,11 @@ def main_menu():
     button2 = Button(270, 70, 250, 250, white, "Уровни", open_window_level)
     button3 = Button(580, 110, 160, 160, white, "Креатив", open_window_creative)
     screen.blit(main_menu_image, (0, 0))
+    pygame.mixer.music.stop()
+    pygame.mixer.music.load('/Users/forcs2/Desktop/Geometry_dash/Main_menu_music.mp3')
+    pygame.mixer.music.play(loops = -1)
     while True:
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
